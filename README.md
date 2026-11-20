@@ -81,3 +81,4 @@ Open `js/script.js`:
 - Test each promo code and each delivery fee.
 - Check all image paths and mobile layout.
 - Replace sample stock, prices, policies and delivery rates with real information.
+# teddy-shop
