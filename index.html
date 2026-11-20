@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover soft, adorable teddy bears at Teddy Bear Shop. Find the perfect bear and order online.">
+  <meta name="theme-color" content="#fce8df">
+  <title>Teddy Bear Shop | Soft hugs, happy moments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <div class="announcement">A little softness goes a long way ♡ &nbsp; | &nbsp; Free delivery on orders over 100 TND</div>
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a class="logo" href="#home"><span class="logo-icon">🧸</span><span>Teddy <b>Bear</b></span></a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li><li><a href="#shop">Shop</a></li>
+        <li><a href="#about">Our Story</a></li><li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="cart nav-cart" id="cart-btn" aria-label="Open shopping cart">🛒 <span id="cart-count">0</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner container">
+        <div class="hero-content">
+          <span class="eyebrow">MADE FOR YOUR HAPPY MOMENTS</span>
+          <h1>Big hugs.<br><em>Little bears.</em></h1>
+          <p>Meet your new cuddly companion. Thoughtful little gifts, made to bring a little more joy to every day.</p>
+          <a href="#shop" class="btn">Explore the collection <span>→</span></a>
+          <div class="hero-note"><span>♡</span> A cute gift for every occasion</div>
+        </div>
+        <div class="hero-image-wrap">
+          <div class="hero-blob"></div>
+          <img src="images/bear1.jpg" alt="A cute teddy bear from our collection" class="hero-image">
+          <span class="hero-sticker">Soft<br> hugs!</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits container" aria-label="Shop benefits">
+      <div><span>🎁</span><p><b>Gift-ready</b><small>Made for giving</small></p></div>
+      <div><span>♡</span><p><b>Extra cuddly</b><small>Softness you can feel</small></p></div>
+      <div><span>🚚</span><p><b>Tunisia delivery</b><small>Delivered to your door</small></p></div>
+    </section>
+
+    <section class="shop section container" id="shop">
+      <div class="section-heading">
+        <span class="eyebrow">FIND YOUR NEW FRIEND</span>
+        <h2>Our lovely collection</h2>
+        <p>Choose the bear that makes you smile.</p>
+      </div>
+      <div class="shop-tools">
+        <label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Search teddy bears..." aria-label="Search products"></label>
+        <select id="sort-select" aria-label="Sort products">
+          <option value="featured">Sort: Featured</option><option value="low">Price: Low to high</option>
+          <option value="high">Price: High to low</option><option value="name">Name: A to Z</option>
+        </select>
+      </div>
+      <div class="filters" role="group" aria-label="Product categories">
+        <button class="filter-btn active" data-filter="all">All bears</button>
+        <button class="filter-btn" data-filter="classic">Classic</button>
+        <button class="filter-btn" data-filter="pink">Pink</button>
+        <button class="filter-btn" data-filter="special">Special</button>
+        <button class="filter-btn" data-filter="sale">On sale</button>
+      </div>
+      <div class="products" id="products">
+        <article class="product-card" data-id="classic-bear" data-category="classic" data-name="Classic Bear" data-price="19.99" data-old-price="" data-stock="12" data-description="A timeless soft teddy bear and a lovely companion for everyday cuddles.">
+          <div class="product-image-wrap"><img src="images/bear2.jpg" alt="Classic Bear" loading="lazy"><span class="product-tag">Bestseller</span><button class="quick-view" type="button">Quick view</button></div>
+          <div class="product-info"><p class="product-category">CLASSIC COLLECTION</p><h3>Classic Bear</h3><p class="price">19.99 TND</p><p class="stock-note">In stock</p><button class="add-cart btn" type="button">Add to cart</button></div>
+        </article>
+        <article class="product-card" data-id="pink-bear" data-category="pink" data-name="Pink Bear" data-price="21.99" data-old-price="24.99" data-stock="8" data-description="A sweet pink teddy bear, perfect for birthdays and thoughtful surprises.">
+          <div class="product-image-wrap"><img src="images/bear3.jpg" alt="Pink Bear" loading="lazy"><span class="product-tag sale-tag">SALE</span><button class="quick-view" type="button">Quick view</button></div>
+          <div class="product-info"><p class="product-category">PINK COLLECTION</p><h3>Pink Bear</h3><p class="price"><del>24.99 TND</del> 21.99 TND</p><p class="stock-note">In stock</p><button class="add-cart btn" type="button">Add to cart</button></div>
+        </article>
+        <article class="product-card" data-id="panda-bear" data-category="special" data-name="Panda Bear" data-price="20.99" data-old-price="" data-stock="5" data-description="A playful panda-inspired plush friend with a lovely look.">
+          <div class="product-image-wrap"><img src="images/bear4.jpg" alt="Panda Bear" loading="lazy"><span class="product-tag">Special</span><button class="quick-view" type="button">Quick view</button></div>
+          <div class="product-info"><p class="product-category">SPECIAL COLLECTION</p><h3>Panda Bear</h3><p class="price">20.99 TND</p><p class="stock-note">Only 5 left</p><button class="add-cart btn" type="button">Add to cart</button></div>
+        </article>
+        <article class="product-card" data-id="baby-bear" data-category="classic" data-name="Baby Bear" data-price="17.99" data-old-price="" data-stock="10" data-description="A little bear with a big personality. A sweet gift for someone special.">
+          <div class="product-image-wrap"><img src="images/bear5.jpg" alt="Baby Bear" loading="lazy"><button class="quick-view" type="button">Quick view</button></div>
+          <div class="product-info"><p class="product-category">CLASSIC COLLECTION</p><h3>Baby Bear</h3><p class="price">17.99 TND</p><p class="stock-note">In stock</p><button class="add-cart btn" type="button">Add to cart</button></div>
+        </article>
+      </div>
+      <p class="no-results" id="no-results" hidden>No bears found. Try another search ♡</p>
+      <p class="demo-note">Product availability shown here is sample stock. Update it when your real inventory changes.</p>
+    </section>
+
+    <section class="promo-band">
+      <div class="container promo-inner"><div><span class="eyebrow">A LITTLE TREAT FOR YOU</span><h2>Something sweet is waiting.</h2><p>Use <b>TEDDY10</b> at checkout for 10% off your product subtotal.</p></div><span class="promo-code">TEDDY10</span></div>
+    </section>
+
+    <section class="about section container" id="about">
+      <div class="about-image"><img src="images/bear5.jpg" alt="A teddy bear from Teddy Bear Shop" loading="lazy"></div>
+      <div class="about-text"><span class="eyebrow">OUR LITTLE STORY</span><h2>Made to spread<br><em>a little happiness.</em></h2><p>We are a small shop with a big love for teddy bears. Our mission is to bring softness, joy and a little more happiness into your life.</p><p>Whether it's a birthday, a surprise or simply a little treat, there's a bear for every lovely moment.</p><a href="#contact" class="text-link">Say hello to us →</a></div>
+    </section>
+
+    <section class="reviews section" id="reviews">
+      <div class="container">
+        <div class="section-heading"><span class="eyebrow">KIND WORDS</span><h2>Share the love ♡</h2><p>Leave a review about your shopping experience.</p></div>
+        <form id="review-form" class="review-form">
+          <input id="review-name" type="text" placeholder="Your first name" maxlength="40" required>
+          <select id="review-rating" aria-label="Rating"><option value="5">★★★★★ — Excellent</option><option value="4">★★★★☆ — Very good</option><option value="3">★★★☆☆ — Good</option><option value="2">★★☆☆☆ — Could be better</option><option value="1">★☆☆☆☆ — Not great</option></select>
+          <textarea id="review-text" placeholder="Write a short review..." maxlength="300" required></textarea>
+          <button class="btn" type="submit">Post review</button>
+        </form>
+        <p class="demo-note">Reviews are saved only in this browser in this demo version; they are not verified customer testimonials.</p>
+        <div id="review-list" class="review-list" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="contact section container" id="contact">
+      <div class="section-heading"><span class="eyebrow">WE'RE HERE FOR YOU</span><h2>Let's talk</h2><p>Have a question about an order or a product? Send us a message.</p></div>
+      <form id="contact-form" class="contact-form">
+        <div class="form-row"><input type="text" id="contact-name" placeholder="Your name" required maxlength="80"><input type="email" id="contact-email" placeholder="Your email" required maxlength="120"></div>
+        <textarea id="contact-message" placeholder="Your message..." required maxlength="1500"></textarea>
+        <button class="btn" id="contact-submit" type="submit">Send message →</button>
+        <p id="form-result" class="form-result" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner"><div><a class="logo footer-logo" href="#home">🧸 Teddy <b>Bear</b></a><p>Spread happiness one bear at a time.</p></div><div class="footer-links"><a href="#shop">Shop</a><a href="#about">Our story</a><a href="#contact">Contact</a></div></div>
+    <div class="copyright">© <span id="year"></span> Teddy Bear Shop. All rights reserved.</div>
+  </footer>
+
+  <!-- Product details dialog -->
+  <dialog id="product-dialog" class="product-dialog">
+    <button class="dialog-close" id="product-dialog-close" aria-label="Close">×</button>
+    <img id="dialog-image" src="" alt="">
+    <div><p class="eyebrow">MEET YOUR NEW FRIEND</p><h2 id="dialog-name"></h2><p class="dialog-price" id="dialog-price"></p><p id="dialog-description"></p><p id="dialog-stock" class="stock-note"></p><button class="btn" id="dialog-add">Add to cart</button></div>
+  </dialog>
+
+  <!-- Shopping cart -->
+  <div class="cart-overlay" id="cart-overlay">
+    <aside class="cart-panel" role="dialog" aria-modal="true" aria-label="Shopping cart">
+      <div class="cart-header"><h2>Your cart 🧸</h2><button id="cart-close" aria-label="Close cart">×</button></div>
+      <div id="cart-content">
+        <ul id="cart-items"></ul><p id="cart-empty">Your cart is empty ♡</p>
+        <div class="cart-summary">
+          <label for="promo-input">Promo code</label><div class="promo-entry"><input id="promo-input" type="text" placeholder="Enter code"><button id="apply-promo" type="button">Apply</button></div><p id="promo-result" class="small-message"></p>
+          <div class="summary-line"><span>Subtotal</span><b><span id="cart-subtotal">0.00</span> TND</b></div>
+          <div class="summary-line"><span>Discount</span><b>- <span id="cart-discount">0.00</span> TND</b></div>
+          <div class="summary-line"><span>Delivery</span><b><span id="cart-delivery">0.00</span> TND</b></div>
+          <div class="summary-line total-line"><span>Total</span><b><span id="cart-total">0.00</span> TND</b></div>
+          <button class="btn btn-light" id="clear-cart" type="button">Clear cart</button><button class="btn" id="checkout-btn" type="button">Continue to checkout →</button>
+        </div>
+      </div>
+      <form id="order-form" class="order-form" hidden>
+        <h3>Delivery details ♡</h3>
+        <input type="text" id="order-name" placeholder="Your full name" maxlength="100" required>
+        <input type="tel" id="order-phone" placeholder="Phone (8 digits)" pattern="[0-9]{8}" maxlength="8" required>
+        <select id="order-city" required><option value="">Choose your governorate</option><option value="Tunis">Tunis</option><option value="Ariana">Ariana</option><option value="Ben Arous">Ben Arous</option><option value="Manouba">Manouba</option><option value="Sousse">Sousse</option><option value="Monastir">Monastir</option><option value="Nabeul">Nabeul</option><option value="Bizerte">Bizerte</option><option value="Sfax">Sfax</option><option value="Other">Other governorate</option></select>
+        <textarea id="order-address" placeholder="Full delivery address" required maxlength="500"></textarea>
+        <p class="delivery-hint" id="delivery-hint">Choose a governorate to calculate delivery.</p>
+        <div class="checkout-total">Estimated total: <b><span id="checkout-total">0.00</span> TND</b></div>
+        <label class="checkbox-line"><input type="checkbox" id="cash-on-delivery" checked disabled> Cash on delivery</label>
+        <button type="submit" class="btn" id="order-submit">Place order →</button>
+        <button type="button" class="text-link back-btn" id="back-cart">← Back to cart</button>
+        <p class="small-message">Your order is a request. The shop will contact you to confirm availability and delivery.</p>
+      </form>
+      <div id="order-success" class="order-success" hidden><div class="success-icon">♡</div><h2>Thank you!</h2><p>Your order request has been sent.</p><p>Reference:</p><strong id="success-order-id"></strong><p>We will contact you to confirm your order.</p><button class="btn" id="success-close" type="button">Continue shopping</button></div>
+    </aside>
+  </div>
+</body>
+</html>

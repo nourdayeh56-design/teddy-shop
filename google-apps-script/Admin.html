@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:Arial,sans-serif;background:#fff9f6;color:#543326;margin:0;padding:25px}
+    .wrap{max-width:1100px;margin:auto}h1{font-family:Georgia,serif}
+    .card{background:white;border:1px solid #f0ddd5;border-radius:14px;padding:20px;margin:15px 0}
+    input,button,select{font:inherit;padding:10px;border:1px solid #e5cfc5;border-radius:8px}
+    button{background:#d78383;color:white;border:0;cursor:pointer;font-weight:bold}
+    .login{max-width:400px;margin:12vh auto}.error{color:#b96363}
+    .table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px}
+    th,td{text-align:left;padding:10px;border-bottom:1px solid #f0e4de;vertical-align:top}
+    th{background:#fce8df}.status{min-width:125px}.muted{color:#8c7167;font-size:13px}
+    #dashboard[hidden],#login[hidden]{display:none}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <section id="login" class="card login">
+    <h1>🧸 Shop admin</h1><p class="muted">Sign in to manage order requests.</p>
+    <input id="password" type="password" placeholder="Admin password" style="width:100%;box-sizing:border-box">
+    <p><button id="login-btn">Sign in</button></p><p id="login-error" class="error"></p>
+  </section>
+  <section id="dashboard" hidden>
+    <h1>🧸 Teddy Bear Shop — Orders</h1>
+    <p class="muted">Private order management. Update a status to keep your Google Sheet in sync.</p>
+    <div class="card"><button id="refresh-btn">Refresh orders</button> <span id="count" class="muted"></span><p id="dashboard-error" class="error"></p></div>
+    <div class="card table-wrap">
+      <table><thead><tr><th>Order</th><th>Customer</th><th>Products</th><th>Total</th><th>Address</th><th>Status</th></tr></thead>
+      <tbody id="orders-body"></tbody></table>
+    </div>
+  </section>
+</div>
+<script>
+let adminToken = "";
+const statuses = ["Pending","Confirmed","Preparing","Shipped","Delivered","Cancelled"];
+function showError(id, message){document.getElementById(id).textContent=message||"";}
+document.getElementById("login-btn").addEventListener("click",()=>{
+  const password=document.getElementById("password").value;
+  showError("login-error","");
+  google.script.run.withSuccessHandler(token=>{
+    adminToken=token;
+    document.getElementById("login").hidden=true;
+    document.getElementById("dashboard").hidden=false;
+    loadOrders();
+  }).withFailureHandler(err=>showError("login-error",err.message||String(err))).adminLogin(password);
+});
+document.getElementById("password").addEventListener("keydown",e=>{if(e.key==="Enter")document.getElementById("login-btn").click();});
+document.getElementById("refresh-btn").addEventListener("click",loadOrders);
+function loadOrders(){
+  showError("dashboard-error","");
+  google.script.run.withSuccessHandler(renderOrders)
+    .withFailureHandler(err=>showError("dashboard-error",err.message||String(err)))
+    .adminGetOrders(adminToken);
+}
+function renderOrders(orders){
+  const body=document.getElementById("orders-body");body.innerHTML="";
+  document.getElementById("count").textContent=orders.length+" order(s)";
+  orders.forEach(order=>{
+    const tr=document.createElement("tr");
+    const cells=[order.orderID,order.name+"\\n"+order.phone+"\\n"+order.city,order.items,order.total+" TND",order.address];
+    cells.forEach(value=>{const td=document.createElement("td");td.textContent=value;tr.appendChild(td);});
+    const statusCell=document.createElement("td");
+    const select=document.createElement("select");select.className="status";
+    statuses.forEach(status=>{const option=document.createElement("option");option.value=status;option.textContent=status;select.appendChild(option);});
+    select.value=statuses.includes(order.status)?order.status:"Pending";
+    select.addEventListener("change",()=>{
+      select.disabled=true;
+      google.script.run.withSuccessHandler(()=>{select.disabled=false;})
+        .withFailureHandler(err=>{select.disabled=false;showError("dashboard-error",err.message||String(err));})
+        .adminUpdateStatus(adminToken,order.orderID,select.value);
+    });
+    statusCell.appendChild(select);tr.appendChild(statusCell);body.appendChild(tr);
+  });
+}
+</script>
+</body>
+</html>
